@@ -1,8 +1,8 @@
-import button from "./atoms/button";
+const moduleTitle = "Call to Action";
 
 export default {
   name: "call-to-action",
-  title: "Call to Action",
+  title: moduleTitle,
   type: "object",
   fields: [
     {
@@ -21,23 +21,28 @@ export default {
       ],
     },
     {
+      name: "button",
+      title: "CTA Button",
+      type: "button",
+    },
+    {
       name: "image",
       title: "Image",
-      type: "image",
-      options: {
-        hotspot: true, // <-- Defaults to false
-      },
-      fields: [
-        {
-          name: "caption",
-          type: "string",
-          title: "Caption",
-          options: {
-            isHighlighted: true, // <-- make this field easily accessible
-          },
-        },
-      ],
+      type: "image_hot_spot",
     },
-    button,
   ],
+  preview: {
+    select: {
+      title: "heading",
+      subtitle: "content",
+      media: "image",
+    },
+    prepare({ title, media }) {
+      return {
+        title: title || moduleTitle,
+        subtitle: `Module > ${moduleTitle}`,
+        media: media,
+      };
+    },
+  },
 };

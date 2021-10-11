@@ -1,7 +1,3 @@
-import button from "./atoms/button";
-
-import React from "react";
-
 export default {
   name: "banner",
   title: "Banner",
@@ -23,24 +19,19 @@ export default {
       ],
     },
     {
+      name: "button",
+      title: "CTA Button",
+      type: "button",
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+    {
       name: "image",
       title: "Image",
-      type: "image",
-      options: {
-        hotspot: true, // <-- Defaults to false
-      },
-      fields: [
-        {
-          name: "caption",
-          type: "string",
-          title: "Caption",
-          options: {
-            isHighlighted: true, // <-- make this field easily accessible
-          },
-        },
-      ],
+      type: "image_hot_spot",
     },
-    button,
   ],
   preview: {
     select: {
@@ -48,7 +39,7 @@ export default {
       subtitle: "content",
       media: "image",
     },
-    prepare({ title, subtitle, media }) {
+    prepare({ title, media }) {
       return {
         title: title,
         subtitle: "Module > Banner",

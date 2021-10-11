@@ -8,11 +8,5 @@ export default {
       title: "Site Title",
       type: "string",
     },
-    {
-      name: "description",
-      title: "Description",
-      type: "text",
-      rows: 5,
-    },
   ],
 };

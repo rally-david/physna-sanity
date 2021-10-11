@@ -1,27 +1,29 @@
+const moduleTitle = "Embed Greenhouse Jobs";
+
 export default {
   name: "embed-greenhouse",
-  title: "Embed Greenhouse Jobs",
+  title: moduleTitle,
   type: "object",
   fields: [
-    {
-      name: "heading",
-      title: "Title",
-      type: "string",
-    },
-    {
-      name: "content",
-      title: "Content",
-      type: "array",
-      of: [
-        {
-          type: "block",
-        },
-      ],
-    },
     {
       name: "embed_code",
       title: "Embed Code",
       type: "text",
+      rows: 5,
     },
   ],
+  preview: {
+    select: {
+      title: "embed_code",
+      subtitle: "content",
+      media: "image",
+    },
+    prepare({ title, media }) {
+      return {
+        title: title || moduleTitle,
+        subtitle: `Module > ${moduleTitle}`,
+        media: media,
+      };
+    },
+  },
 };

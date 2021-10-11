@@ -27,9 +27,13 @@ import columns from "./objects/columns";
 import fiftyFifty from "./objects/fifty-fifty";
 import embedGreenhouse from "./objects/embed-greenhouse";
 import embedSalesforce from "./objects/embed-salesforce";
-import newsItems from "./objects/news-items";
+import newsItems from "./objects/news-feed";
 import title from "./objects/title";
 import twoColumnRepeater from "./objects/two-column-repeater";
+
+// Objects (atoms)
+import button from "./objects/atoms/button";
+import imageHotSpot from "./objects/atoms/imageHotSpot";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -64,5 +68,9 @@ export default createSchema({
     newsItems,
     title,
     twoColumnRepeater,
+
+    // atoms
+    button,
+    imageHotSpot,
   ]),
 });

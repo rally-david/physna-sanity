@@ -5,14 +5,13 @@ export default {
   fields: [
     {
       name: "title",
-      title: "Site Title",
+      title: "Title",
       type: "string",
     },
     {
-      name: "description",
+      name: "content",
       title: "Description",
       type: "text",
-      rows: 5,
     },
   ],
 };

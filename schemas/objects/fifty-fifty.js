@@ -1,5 +1,3 @@
-import button from "./atoms/button";
-
 export default {
   name: "fifty-fifty",
   title: "50-50",
@@ -21,6 +19,15 @@ export default {
       ],
     },
     {
+      name: "button",
+      title: "CTA Button",
+      type: "button",
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+    {
       name: "image",
       title: "Image",
       type: "image",
@@ -32,12 +39,23 @@ export default {
           name: "caption",
           type: "string",
           title: "Caption",
-          options: {
-            isHighlighted: true, // <-- make this field easily accessible
-          },
+          initialValue: "50-50 Photo",
         },
       ],
     },
-    button,
   ],
+  preview: {
+    select: {
+      title: "heading",
+      subtitle: "content",
+      media: "image",
+    },
+    prepare({ title, media }) {
+      return {
+        title: title,
+        subtitle: "Module > 50-50",
+        media: media,
+      };
+    },
+  },
 };

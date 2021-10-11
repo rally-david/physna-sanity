@@ -3,13 +3,7 @@ import S from "@sanity/desk-tool/structure-builder";
 import React from "react";
 
 // icons
-import {
-  MdWeb,
-  MdSettings,
-  MdWhatshot,
-  MdLooks,
-  MdOutlineHome,
-} from "react-icons/md";
+import { MdWeb, MdSettings, MdOutlineHome } from "react-icons/md";
 
 // single page templates
 import careers from "../../schemas/documents/careers";
@@ -51,6 +45,7 @@ for (const document of documents) {
       .icon(document?.icon)
       .child(
         S.document()
+          .title(documentSchema.title)
           .schemaType(documentSchema.name)
           .documentId(documentSchema.name)
       )

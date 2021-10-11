@@ -11,7 +11,8 @@
     "@sanity/base",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "media"
   ],
   "env": {
     "development": {
@@ -26,6 +27,10 @@
     {
       "implements": "part:@sanity/desk-tool/structure",
       "path": "./src/deskStructure"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./src/plugins/media"
     }
   ]
 }

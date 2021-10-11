@@ -5,19 +5,23 @@ export default {
   fields: [
     {
       name: "heading",
-      title: "Heading",
+      title: "Title",
       type: "string",
     },
     {
       name: "url",
-      title: "url",
+      title: "Link URL",
       type: "string",
     },
     {
       name: "target",
-      title: "target",
+      title: "Link Target",
       type: "string",
       initialValue: "_self",
     },
   ],
+  options: {
+    collapsible: true,
+    collapsed: false,
+  },
 };
