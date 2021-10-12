@@ -3,46 +3,68 @@ import S from "@sanity/desk-tool/structure-builder";
 import React from "react";
 
 // icons
-import { MdWeb, MdSettings, MdOutlineHome } from "react-icons/md";
+import { MdTag, MdWeb, MdSettings, MdOutlineHome } from "react-icons/md";
 
-// single page templates
-import careers from "../../schemas/documents/careers";
-import contactUs from "../../schemas/documents/contactUs";
-import features from "../../schemas/documents/features";
-import home from "../../schemas/documents/home";
-import news from "../../schemas/documents/news";
-import resources from "../../schemas/documents/resources";
-import siteSettings from "../../schemas/documents/siteSettings";
-import useCases from "../../schemas/documents/useCases";
+import { documents, adminDocuments } from "../../schemas/schema";
 
-const documents = [
-  { schema: home, icon: MdOutlineHome },
-  { schema: careers, icon: MdWeb },
-  { schema: contactUs, icon: MdWeb },
-  { schema: features, icon: MdWeb },
-  { schema: news, icon: MdWeb },
-  { schema: resources, icon: MdWeb },
-  { schema: siteSettings, icon: MdSettings },
-  { schema: useCases, icon: MdWeb },
-];
+// take imports from schema and add icons according to name
+const documentsDashboardConfig = [];
+for (const schema of documents) {
+  let icon = MdWeb;
+  switch (schema.name) {
+    case "home":
+      icon = MdOutlineHome;
+      break;
+    case "siteSettings":
+      icon = MdSettings;
+      break;
+    default:
+      icon = MdWeb;
+      break;
+  }
+  documentsDashboardConfig.push({
+    icon,
+    schema,
+  });
+}
 
-// admin controls (not pages) go on top, followed by landing pages, then detail pages
-const adminDocuments = [siteSettings];
+// manually add template ids that were not imported into schema (such as plugins)
+const pluginsEtcDashboardConfig = [];
+// pluginsEtcDashboardConfig.push(
+//   S.listItem()
+//     .title("Media Tags")
+//     .icon(MdTag)
+//     .child(
+//       S.document()
+//         .title("Media Tags")
+//         .schemaType("media.tag")
+//         .documentId("media.tag")
+//     )
+// );
 
 // collect template ids to automate hiding singleton pages
-const templateIds = documents.map((a) => a.schema.name);
+const singletonTemplateIds = documents.map((a) => a.name);
+
+// collect admin ids to automate sorting admin sections
+const adminTemplateIds = adminDocuments
+  .filter((adminDocument) => documents.indexOf(adminDocument) >= 0)
+  .map((a) => a.name);
+
+const manuallyHiddenTemplateIds = ["media.tag"];
 
 // hide all singleton pages (documents array) from automatically generated document list
-const hiddenDocTypes = (listItem) => !templateIds.includes(listItem.getId());
+const dashboardHiddenTypes = (listItem) =>
+  !singletonTemplateIds.includes(listItem.getId()) &&
+  !manuallyHiddenTemplateIds.includes(listItem.getId());
 
 // generate list items based on schema
-const listItems = [];
-for (const document of documents) {
-  const documentSchema = document.schema;
-  listItems.push(
+const documentListItems = [];
+for (const documentDashboardConfig of documentsDashboardConfig) {
+  const documentSchema = documentDashboardConfig.schema;
+  documentListItems.push(
     S.listItem()
       .title(documentSchema.title)
-      .icon(document?.icon)
+      .icon(documentDashboardConfig?.icon)
       .child(
         S.document()
           .title(documentSchema.title)
@@ -52,14 +74,11 @@ for (const document of documents) {
   );
 }
 
+const listItems = [...documentListItems, ...pluginsEtcDashboardConfig];
+
 // detect if document is part of the admin group
 const isAdminItem = (listItem) => {
-  for (const adminDocument of adminDocuments) {
-    if (adminDocument.name === listItem.spec.id) {
-      return true;
-    }
-  }
-  return false;
+  return adminTemplateIds.indexOf(listItem.spec.id) >= 0;
 };
 
 const JsonPreview = ({ document }) => (
@@ -89,7 +108,7 @@ export default () =>
     .items([
       ...listItems.filter((value) => !isAdminItem(value)),
       S.divider(),
-      ...S.documentTypeListItems().filter(hiddenDocTypes),
+      ...S.documentTypeListItems().filter(dashboardHiddenTypes),
       S.divider(),
       ...listItems.filter((value) => isAdminItem(value)),
     ]);

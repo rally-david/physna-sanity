@@ -15,5 +15,10 @@ export default {
         { type: "embed-greenhouse" },
       ],
     },
+    {
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+    },
   ],
 };

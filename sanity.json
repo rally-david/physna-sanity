@@ -12,7 +12,8 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "media"
+    "media",
+    "physna-logo"
   ],
   "env": {
     "development": {
@@ -31,6 +32,10 @@
     {
       "implements": "part:@sanity/form-builder/input/image/asset-sources",
       "path": "./src/plugins/media"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "./src/deskStyling/index.css"
     }
   ]
 }

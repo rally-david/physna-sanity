@@ -14,5 +14,10 @@ export default {
         { type: "fifty-fifty" },
       ],
     },
+    {
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+    },
   ],
 };

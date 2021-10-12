@@ -6,7 +6,7 @@ export default {
   type: "object",
   fields: [
     {
-      name: "embed_code",
+      name: "embedCode",
       title: "Embed Code",
       type: "text",
       rows: 5,
@@ -14,13 +14,13 @@ export default {
   ],
   preview: {
     select: {
-      title: "embed_code",
+      title: "embedCode",
       subtitle: "content",
       media: "image",
     },
     prepare({ title, media }) {
       return {
-        title: title || moduleTitle,
+        title: moduleTitle,
         subtitle: `Module > ${moduleTitle}`,
         media: media,
       };

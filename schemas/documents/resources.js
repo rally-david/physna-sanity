@@ -13,5 +13,10 @@ export default {
         { type: "call-to-action" },
       ],
     },
+    {
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+    },
   ],
 };

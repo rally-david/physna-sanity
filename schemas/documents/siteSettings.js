@@ -4,9 +4,12 @@ export default {
   type: "document",
   fields: [
     {
-      name: "title",
-      title: "Site Title",
-      type: "string",
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+      options: {
+        collapsed: false,
+      },
     },
   ],
 };

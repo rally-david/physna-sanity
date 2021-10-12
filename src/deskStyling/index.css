@@ -1,0 +1,13 @@
+/*
+:root {
+  --card-bg-color: #22242f;
+  --brand-primary: #ff0000;
+  --brand-secondary: #00ff00;
+}
+
+div[data-ui="Card"] {
+  --card-bg-color: #22242f;
+  --brand-primary: #ff0000;
+  --brand-secondary: #00ff00;
+}
+*/

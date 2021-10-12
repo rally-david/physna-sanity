@@ -12,19 +12,9 @@ export default {
       of: [
         {
           type: "reference",
-          to: [
-            { type: "newsDetail" },
-            { type: "featuresDetail" },
-            { type: "resourcesDetail" },
-          ],
+          to: [{ type: "newsDetail" }],
         },
       ],
-    },
-    {
-      name: "newsPost",
-      title: "News Post",
-      type: "reference",
-      to: [{ type: "newsDetail" }],
     },
     {
       title: "Show News Feed?",

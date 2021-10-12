@@ -14,5 +14,10 @@ export default {
         { type: "news-feed" },
       ],
     },
+    {
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+    },
   ],
 };

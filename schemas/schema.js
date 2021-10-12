@@ -28,12 +28,27 @@ import fiftyFifty from "./objects/fifty-fifty";
 import embedGreenhouse from "./objects/embed-greenhouse";
 import embedSalesforce from "./objects/embed-salesforce";
 import newsItems from "./objects/news-feed";
+import seo from "./objects/seo";
 import title from "./objects/title";
 import twoColumnRepeater from "./objects/two-column-repeater";
 
 // Objects (atoms)
 import button from "./objects/atoms/button";
 import imageHotSpot from "./objects/atoms/imageHotSpot";
+
+export const documents = [
+  home,
+  careers,
+  contactUs,
+  features,
+  news,
+  resources,
+  siteSettings,
+  useCases,
+];
+
+// admin controls (not pages) go on top, followed by landing pages, then detail pages
+export const adminDocuments = [siteSettings];
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -66,6 +81,7 @@ export default createSchema({
     embedGreenhouse,
     embedSalesforce,
     newsItems,
+    seo,
     title,
     twoColumnRepeater,
 

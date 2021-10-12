@@ -30,7 +30,7 @@ export default {
     {
       name: "image",
       title: "Image",
-      type: "image_hot_spot",
+      type: "imageHotSpot",
     },
   ],
   preview: {

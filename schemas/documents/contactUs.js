@@ -14,5 +14,10 @@ export default {
         { type: "embed-salesforce" },
       ],
     },
+    {
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+    },
   ],
 };

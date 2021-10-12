@@ -1,5 +1,5 @@
 export default {
-  name: "image_hot_spot",
+  name: "imageHotSpot",
   title: "Image",
   type: "image",
   options: {
